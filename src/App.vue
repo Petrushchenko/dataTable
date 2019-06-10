@@ -1,19 +1,14 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png">
 		<router-view></router-view>
-		<!-- <Data /> -->
 	</div>
 </template>
 
 <script>
-import Data from './components/Data.vue'
 
 export default {
 	name: 'app',
-	// components: {
-	// 	Data
-	// }
+	
 }
 </script>
 
