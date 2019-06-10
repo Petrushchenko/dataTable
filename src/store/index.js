@@ -6,8 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		users: [
-			{name: "Bob", phone: "0981111111", surname: "Marley", email: "bm@a.b"},
-			{name: "Mikle", phone: "0982222222", surname: "Jackson", email: "mj@a.b"}
+			{name: "Bob",  surname: "Marley", phone: "0981111111", email: "bm@a.b"},
+			{name: "Mikle", surname: "Jackson",phone: "0982222222",  email: "mj@a.b"}
 		],
 	},
 
@@ -16,8 +16,12 @@ const store = new Vuex.Store({
 			commit('ADD_USER', user)
 		},
 		loadData({commit}, data) {
-			console.log(data);
-			return commit('LOAD_DATA', data)
+			commit('LOAD_DATA', data)
+		},
+		editUser({commit, state}, {index, fieldName, text}) {
+			const newUser = state.users.filter( (item, i) => i === index)[0]
+			newUser[fieldName] = text
+			commit('EDIT_USER', {index: index, data: newUser})
 		}
 	},
 
@@ -27,6 +31,9 @@ const store = new Vuex.Store({
 		},
 		LOAD_DATA(state, data) {
 			state.users = data
+		},
+		EDIT_USER(state, payload) {
+			state.users.splice(payload.index, 1, payload.data)
 		}
 	},
 
