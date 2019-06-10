@@ -12,12 +12,14 @@
 					contenteditable="true"
 					@keydown.enter.prevent="editField($event, index, field)"
 				>{{ value }}</td>
+				<td><button type="button" @click="deleteUser(index)">DELETE</button></td>
 			</tr>
 		</tbody>
 	</table>
 </template>
 
 <script >
+
 	export default {
 		data(){
 			return {
@@ -38,9 +40,6 @@
 				let data = JSON.parse(localStorage.getItem('users'));
 				this.$store.dispatch('loadData', data)
 			} 
-			else {
-				this.saveUsers();
-			}
 		},
 		methods : {
 			saveUsers() {
@@ -51,7 +50,9 @@
 				this.newText = e.target.innerText
 				const text = this.newText;
 				this.$store.dispatch('editUser', {index, fieldName, text })
-				this.saveUsers();
+			},
+			deleteUser(index) {
+				this.$store.dispatch('deleteUser', index)
 			}
 		},
 	}

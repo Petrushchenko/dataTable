@@ -26,6 +26,9 @@
 		},
 		methods: {
 			addUser(name, surname, phone, email) {
+				if (name === '' || surname === '' || phone === '' || email === '') {
+					return
+				}
 				this.$store.dispatch('addUser', { name, surname, phone, email })
 				this.name = ''
 				this.surname = ''

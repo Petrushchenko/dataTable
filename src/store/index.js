@@ -22,6 +22,9 @@ const store = new Vuex.Store({
 			const newUser = state.users.filter( (item, i) => i === index)[0]
 			newUser[fieldName] = text
 			commit('EDIT_USER', {index: index, data: newUser})
+		},
+		deleteUser({commit}, index) {
+			commit('DELETE_USER', index)
 		}
 	},
 
@@ -34,6 +37,9 @@ const store = new Vuex.Store({
 		},
 		EDIT_USER(state, payload) {
 			state.users.splice(payload.index, 1, payload.data)
+		},
+		DELETE_USER(state, index) {
+			state.users = state.users.filter( (item, i) => i !== index )
 		}
 	},
 
