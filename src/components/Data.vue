@@ -1,6 +1,7 @@
 <template>
 	<div >
 		<router-link to="/edit" class="btn">Add user</router-link>
+		<h2>To edit any data in this table click on cell, type correct text and then press "enter" key on your keyboard</h2>
 		<Table/>
 	</div>
 </template>

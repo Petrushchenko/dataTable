@@ -58,6 +58,13 @@
 	}
 </script>
 
-<style >
-	
+<style lang="scss" scoped>
+	table {
+		margin: 20px auto;
+		width:  80%;
+		border: 1px solid #f4d5a3;
+		td {
+			padding: 5px;
+		}
+	}
 </style>
