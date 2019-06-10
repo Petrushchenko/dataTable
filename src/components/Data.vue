@@ -1,7 +1,20 @@
 <template>
 	<div >
-		Data
+		
 		<router-link to="/edit" class="btn">Edit</router-link>
+		<table>
+			<thead>
+				<tr>
+					<th v-for="label in labels">{{ label }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="user in users">
+					<td>{{ user.name }}</td>
+					<td>{{ user.phone }}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </template>
 
@@ -9,6 +22,12 @@
 
 	export default {
 		name: 'Data',
+		data(){
+			return {
+				labels: ["name", "phone"],
+				users: this.$store.getters.getUsers
+			}
+		}
 
 	}
 </script>
