@@ -12,12 +12,11 @@
 				<input type="email" name="email" id="email" v-model="email">
 			</div>
 			<button @click.prevent="addUser(name, surname, phone,email)"> add user</button>
+			<div class="textarea-wrapper">
+				<textarea v-model="jsonData"></textarea>
+				<button @click.prevent="addUsers">Load JSON data</button>
+			</div>
 		</form>
-		<form>
-			<textarea v-model="json"></textarea>
-			<button @click.prevent="addUsers">Load JSON data</button>
-		</form>
-		
 </template>
 
 <script>
@@ -28,7 +27,7 @@
 				surname: '',
 				phone: '',
 				email: '',
-				json: ''
+				jsonData: ''
 			}
 		},
 		methods: {
@@ -41,12 +40,28 @@
 				this.surname = ''
 				this.phone = ''
 				this.email = ''
+			},
+			addUsers(data) {
+				const t = this.jsonData.replace(/\s/g, '')
+				let ar = t.split(/},\n?{/)
+					ar=ar.map(item => item.replace("[", ''))
+				console.log(ar )
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	.textarea-wrapper {
+		padding-top: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		textarea {
+			width: 80%;
+			min-height: 100px;
+		}
+	}
 	button {
 		margin-top: 20px;
 		padding: 5px 20px;

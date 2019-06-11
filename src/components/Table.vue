@@ -1,5 +1,6 @@
 <template>
 	<table>
+		<caption>To edit any data in this table click on cell, type correct text and then press "enter" key on your keyboard</caption>
 		<thead>
 			<tr>
 				<th v-for="(label, index) in labels" :key="index">{{ label }}</th>
