@@ -12,6 +12,7 @@
 				<input type="email" name="email" id="email" v-model="email">
 			</div>
 			<button @click.prevent="addUser(name, surname, phone,email)"> add user</button>
+			<h3>Past on this field your json data and click the button</h3>
 			<div class="textarea-wrapper">
 				<textarea v-model="jsonData"></textarea>
 				<button @click.prevent="addUsers">Load JSON data</button>
@@ -41,19 +42,20 @@
 				this.phone = ''
 				this.email = ''
 			},
-			addUsers(data) {
-				const t = this.jsonData.replace(/\s/g, '')
-				let ar = t.split(/},\n?{/)
-					ar=ar.map(item => item.replace("[", ''))
-				console.log(ar )
+			addUsers() {
+				const data = JSON.parse(this.jsonData)
+				this.$store.dispatch('loadJson', data)
+				this.jsonData = ''
 			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	h3 {
+		margin-top: 40px;
+	}
 	.textarea-wrapper {
-		padding-top: 20px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -68,5 +70,8 @@
 	}
 	label {
 		margin-left: 20px;
+	}
+	input {
+		margin-top: 20px;
 	}
 </style>

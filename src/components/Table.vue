@@ -4,6 +4,7 @@
 		<thead>
 			<tr>
 				<th v-for="(label, index) in labels" :key="index">{{ label }}</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -63,9 +64,11 @@
 	table {
 		margin: 20px auto;
 		width:  80%;
-		border: 1px solid #f4d5a3;
-		td {
+		border: 2px solid #f4d5a3;
+		border-collapse: collapse;
+		td, th {
 			padding: 5px;
+			border: 1px solid #f4d5a3;
 		}
 	}
 </style>

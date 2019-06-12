@@ -25,6 +25,9 @@ const store = new Vuex.Store({
 		},
 		deleteUser({commit}, index) {
 			commit('DELETE_USER', index)
+		},
+		loadJson({commit}, data){
+			data.forEach(user => commit('ADD_USER', user))
 		}
 	},
 
